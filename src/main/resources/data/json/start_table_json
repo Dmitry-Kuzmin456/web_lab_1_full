@@ -1,0 +1,8 @@
+{
+    "x": %f,
+    "y": %s,
+    "r": %d,
+    "result": %b,
+    "executionTime": %d,
+    "currentTime": "%s"
+}

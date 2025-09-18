@@ -1,0 +1,43 @@
+services:
+  fcgi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      backend:
+    depends_on:
+      - postgres_db
+    volumes:
+      - ./logs:/app/logs
+
+  httpd:
+    image: "httpd:2.4.62"
+    ports:
+      - "8080:8080"
+    volumes:
+      - "./httpd_server/config.conf:/usr/local/apache2/conf/httpd.conf"
+      - "./static:/var/www"
+    networks:
+      backend:
+    depends_on:
+      - postgres_db
+
+  postgres_db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: dmitry
+      POSTGRES_PASSWORD: qwerty
+      POSTGRES_DB: lab_1_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      backend:
+
+networks:
+  backend:
+
+volumes:
+  postgres_data:
+  redis_data:

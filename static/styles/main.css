@@ -1,0 +1,202 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #fff8f0;
+    color: #4d3b2f;
+}
+
+header {
+    font-family: serif;
+    color: #4d3b2f;
+    font-size: 14pt;
+    padding: 10px 20px;
+    background-color: #fff2e0;
+    border-bottom: 2px solid #f1c27d;
+}
+
+h1 {
+    text-align: center;
+    font-size: 18pt;
+    margin-bottom: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 10px;
+    vertical-align: middle;
+}
+
+td.left { text-align: left; }
+td.right { text-align: right; }
+
+.duck {
+    width: 120px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.input_section table {
+    margin: 20px auto;
+    border: 1px solid #f1c27d;
+    border-radius: 10px;
+    padding: 25px;
+    background-color: #fff5e6;
+    max-width: 1000px;
+    width: 90%;
+}
+
+input[name='r'] {
+    margin: 2px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border: 1px solid #d9a066;
+    border-radius: 5px;
+    background: #ffe5b4;
+    transition: background 0.2s;
+    color: #4d3b2f;
+}
+
+input[name='r']:hover {
+    background: #ffd699;
+}
+
+input[name='r'].active {
+    background: #f1c27d;
+    color: #3e2b1a;
+}
+
+input[name='y'] {
+    padding: 5px;
+    margin-left: 5px;
+    width: 100px;
+    border: 1px solid #d9a066;
+    border-radius: 5px;
+    background: #fff3e0;
+    color: #4d3b2f;
+}
+
+#submitBtn {
+    margin: 20px 0;
+    padding: 8px 20px;
+    border: 1px solid #d9a066;
+    border-radius: 5px;
+    background: #ffe5b4;
+    cursor: pointer;
+    font-size: 14px;
+    color: #4d3b2f;
+}
+
+#submitBtn:hover {
+    background: #f1c27d;
+    color: #3e2b1a;
+}
+
+#graphCanvas {
+    display: block;
+    margin: 20px auto;
+    border: 1px solid #f1c27d;
+    border-radius: 10px;
+    background-color: #fff5e6;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.graph-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.results_section table {
+    margin: 20px auto;
+    width: 90%;
+    border: 1px solid #f1c27d;
+    background: #fff5e6;
+}
+
+.results_section td {
+    border: 1px solid #f1c27d;
+    text-align: center;
+    padding: 8px;
+    color: #4d3b2f;
+}
+
+.results_section tr:nth-child(even) {
+    background-color: #fff3e0;
+}
+
+.results_section::before {
+    content: "Результаты вычислений:";
+    display: block;
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+    text-align: center;
+    font-size: 16px;
+    color: #4d3b2f;
+}
+
+.form-row {
+    margin: 15px 0;
+}
+
+.form-label {
+    display: inline-block;
+    width: 30px;
+    font-weight: bold;
+    color: #4d3b2f;
+}
+
+.error-tooltip {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(-110%, -50%);
+    background: #ff4d4d;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    display: none;
+    z-index: 10;
+}
+
+
+.error-tooltip::after {
+    content: '';
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent transparent #ff4d4d;
+}
+
+.server-error-tooltip {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 5px;
+    max-width: 300px;
+    background: #ffcccc;
+    color: #a00;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    font-size: 13px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.server-error-tooltip.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+

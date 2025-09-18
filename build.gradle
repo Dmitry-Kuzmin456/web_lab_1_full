@@ -1,0 +1,50 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+application {
+    mainClass = 'server.FastCGIServer'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation files('libs/fastcgi-lib.jar')
+
+    // Hibernate ORM
+    implementation 'org.hibernate.orm:hibernate-core:6.4.4.Final'
+
+    // JPA API (идёт вместе с Hibernate, но иногда нужно явно)
+    implementation 'jakarta.persistence:jakarta.persistence-api:3.1.0'
+
+    // PostgreSQL драйвер
+    implementation 'org.postgresql:postgresql:42.7.2'
+
+    // Логирование (для вывода SQL в консоль)
+    implementation 'org.slf4j:slf4j-simple:2.0.12'
+
+    // Реддис для кэширования
+    implementation 'redis.clients:jedis:5.1.0'
+}
+
+jar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE  // игнорируем дубликаты
+    manifest {
+        attributes(
+                'Main-Class': application.mainClass
+        )
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
